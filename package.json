@@ -8,6 +8,11 @@
   },
   "author": "kisenka",
   "license": "MIT",
+  "keywords": [
+    "svg",
+    "transform",
+    "postsvg"
+  ],
   "files": [
     "lib/",
     "index.js",
