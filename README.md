@@ -2,7 +2,7 @@
 
 [PostSVG](https://github.com/kisenka/postsvg) plugin to add prefix to `id` attributes.
 
-Properly converts:
+Properly converts following references:
 
 - `xlink:href="#id"`
 - `style` attribute values like `style="fill:url(#id)"`
