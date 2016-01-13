@@ -62,7 +62,7 @@ you will get:
 </svg>
 ```
 
-Checkout [test](blob/master/test/prefixize.test.js#L8) for examples.
+Checkout [test](test/prefixize.test.js#L8) for examples.
 
 ### Standalone usage
 
