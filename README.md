@@ -19,7 +19,7 @@ $ npm install postsvg-prefixize
 ```js
 var fs = require('fs');
 var postsvg = require('postsvg');
-var prefixize = require('./');
+var prefixize = require('postsvg-prefixize');
 
 var input = fs.readFileSync('input.svg', 'utf8');
 var output = postsvg()
