@@ -1,0 +1,23 @@
+{
+  "name": "postsvg-prefixize",
+  "version": "0.0.1",
+  "description": "PostSVG plugin to add prefix to `id` attributes",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.test.js"
+  },
+  "author": "kisenka",
+  "license": "MIT",
+  "files": [
+    "lib/",
+    "index.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "postsvg": "0.0.1"
+  },
+  "devDependencies": {
+    "chai": "3.4.1",
+    "mocha": "2.3.4"
+  }
+}
