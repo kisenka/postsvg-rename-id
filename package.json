@@ -1,25 +1,33 @@
 {
-  "name": "postsvg-prefixize",
+  "name": "postsvg-rename-id",
   "version": "0.0.1",
-  "description": "PostSVG plugin to add prefix to `id` attributes",
+  "description": "PostSVG plugin to rename id attribute and it's references",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*.test.js"
   },
-  "author": "kisenka",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kisenka/postsvg-rename-id.git"
+  },
   "keywords": [
     "svg",
     "transform",
     "postsvg"
   ],
+  "author": "kisenka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kisenka/postsvg-rename-id/issues"
+  },
+  "homepage": "https://github.com/kisenka/postsvg-rename-id#readme",
   "files": [
     "lib/",
     "index.js",
     "README.md"
   ],
   "dependencies": {
-    "postsvg": "0.0.1"
+    "postsvg": "<=0.1.0"
   },
   "devDependencies": {
     "chai": "3.4.1",

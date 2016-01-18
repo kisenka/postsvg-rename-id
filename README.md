@@ -1,8 +1,8 @@
-# postsvg-prefixize
+# postsvg-rename-id
 
-[PostSVG](https://github.com/kisenka/postsvg) plugin to add prefix to `id` attributes.
+[PostSVG](https://github.com/kisenka/postsvg) plugin to rename `id` attribute and it's references.
 
-Properly converts following references:
+Rename following references:
 
 - `xlink:href="#id"`
 - `style` attribute values like `style="fill:url(#id)"`
@@ -11,7 +11,7 @@ Properly converts following references:
 ## Installation
 
 ```
-$ npm install postsvg-prefixize
+$ npm install postsvg-rename-id
 ```
 
 ## Usage
@@ -19,20 +19,19 @@ $ npm install postsvg-prefixize
 ```js
 var fs = require('fs');
 var postsvg = require('postsvg');
-var prefixize = require('postsvg-prefixize');
+var renameId = require('postsvg-rename-id');
 
 var input = fs.readFileSync('input.svg', 'utf8');
-var output = postsvg()
-  .use(prefixize({prefix: 'TRALALA_'}))
-  .process(input)
-  .toString();
+var result = postsvg()
+  .use(renameId({pattern: 'TRALALA_[id]'}))
+  .process(input);
 
-console.log(output);
+console.log(result.toString());
 ```
 
 Using this `input.svg`
 
-```svg
+```xml
 <svg id="test-svg" width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient id="gradient">
@@ -48,7 +47,7 @@ Using this `input.svg`
 
 you will get:
 
-```svg
+```xml
 <svg id="TRALALA_test-svg" width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient id="TRALALA_gradient">
@@ -62,17 +61,34 @@ you will get:
 </svg>
 ```
 
-Checkout [test](test/prefixize.test.js#L8) for examples.
-
 ### Standalone usage
 
 ```js
-var prefixize = require('postsvg-prefixize');
-var result = prefixize({prefix: 'TRALALA_'}).process('<svg id="test" />');
+var renameId = require('postsvg-rename-id');
+var result = renameId({pattern: 'TRALALA_[id]'}).process('<svg id="test" />');
 console.log(result.toString());
 ```
 
-## Run tests
+## Configuration
+
+### `pattern (string|Function)`
+
+Renaming pattern. Following placeholders can be used:
+- `[id]` - id attribute value.
+- `[document-id]` - current document uid.
+
+If `pattern` provided as a function it will be called with processing options.
+In this way it must returns a string (placeholders can be used as well):
+
+```js
+postsvg()
+  .use(renameId({pattern: function(options) {
+    return options.filename + '_[id]'
+  }}))
+  .process('<svg id="test"/>', {filename: 'a.svg'})
+```
+
+## Tests
 
 ```
 npm test

@@ -1,1 +1,1 @@
-module.exports = require('./lib/prefixize');
+module.exports = require('./lib/rename-id');
